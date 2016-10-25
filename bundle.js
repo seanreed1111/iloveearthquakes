@@ -27,10 +27,12 @@ var quakes$ = Rx.Observable.interval(20000).startWith(0).take(100)
 
 // for leaflet map
 quakes$.subscribe(function(quake) {
-  L.circle([quake.lat, quake.lng], quake.magnitude*10000).addTo(map);
+  L.circle([quake.lat, quake.lng], quake.magnitude*5000).addTo(map);
 });
 
 
+
+// TIL The USVI and BVI are seismically active. Did not know that.
 
 // TTD 
 // **show the initial feed of earthquake one at a time in timestamp order
