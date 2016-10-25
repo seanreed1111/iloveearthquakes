@@ -1,5 +1,5 @@
   var QUAKE_URL = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojsonp';
-  function loadJSONp(url){
+  function loadJSONP(url){
     var script = document.createElement('script');
     script.src = url;
 
