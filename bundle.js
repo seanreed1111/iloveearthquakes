@@ -2,8 +2,8 @@ var quakes$ = Rx.DOM.jsonpRequest({
   url: QUAKE_URL,
   jsonpCallback: 'eqfeed_callback'
 })
-.flatMap(function(dataset){
-  return Rx.Observable.from(dataset.response.features);
+.flatMap(function(obj){
+  return Rx.Observable.from(obj.response.features);
 })
 .map(function(quake){
   return {
