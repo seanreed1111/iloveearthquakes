@@ -1,13 +1,15 @@
 var quakes$ = Rx.Observable.create(function(observer) {
   window.eqfeed_callback = function(response) {
-    var quakes = response.features;
-    quakes.forEach(function(quake) {
-      observer.onNext(quake);
-    });
-  }
+    observer.onNext(response);
+    observer.onCompleted();
+  };
 
   loadJSONP(QUAKE_URL);
-}).do(console.log("quake!"));
+})
+.do(function(x) {console.log(x)})
+.flatMap(function(dataset){
+  return Rx.Observable.from(dataset.features);
+});
 
 quakes$.subscribe(function(quake) {
   var coords = quake.geometry.coordinates;
